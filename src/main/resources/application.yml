@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: Task-Manager
+  r2dbc:
+    url: r2dbc:h2:mem:///taskdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: ""
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+  data:
+    r2dbc:
+      repositories:
+        enabled: true
+
+  main:
+    web-application-type: reactive
+
+logging:
+  level:
+    org.springframework.r2dbc.connection.init: DEBUG
+    org.springframework.r2dbc.core: DEBUG
+    io.r2dbc.h2: DEBUG
+    root: INFO
+
+server:
+  port: 8080
+jwt:
+  secret: worufowurgfowru98yr9uwrgfowurg9wrgf9uwrg9gr93rgh
+  expiration-ms: 3600000
